@@ -1,11 +1,21 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import ReportHeader from "@/components/ReportHeader";
+import NetworkPulse from "@/components/NetworkPulse";
+import Leaderboards from "@/components/Leaderboards";
+import WeeklyCases from "@/components/WeeklyCases";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <ReportHeader />
+        <div className="space-y-10">
+          <NetworkPulse />
+          <Leaderboards />
+          <WeeklyCases />
+        </div>
+        <footer className="mt-12 pt-6 border-t border-border text-center text-xs text-muted-foreground">
+          Generated automatically · Data refreshed weekly · Confidential
+        </footer>
       </div>
     </div>
   );
