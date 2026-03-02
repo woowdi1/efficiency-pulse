@@ -1,7 +1,10 @@
 import ReportHeader from "@/components/ReportHeader";
 import NetworkPulse from "@/components/NetworkPulse";
+import TargetGauges from "@/components/TargetGauges";
 import Leaderboards from "@/components/Leaderboards";
+import DayOfWeekHeatmap from "@/components/DayOfWeekHeatmap";
 import WeeklyCases from "@/components/WeeklyCases";
+import RecoveryTracker from "@/components/RecoveryTracker";
 
 const Index = () => {
   return (
@@ -10,8 +13,11 @@ const Index = () => {
         <ReportHeader />
         <div className="space-y-10">
           <NetworkPulse />
+          <TargetGauges />
           <Leaderboards />
+          <DayOfWeekHeatmap />
           <WeeklyCases />
+          <RecoveryTracker />
         </div>
         <footer className="mt-12 pt-6 border-t border-border text-center text-xs text-muted-foreground">
           Generated automatically · Data refreshed weekly · Confidential
