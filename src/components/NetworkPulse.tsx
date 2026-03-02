@@ -1,8 +1,5 @@
 import { MOCK_KPIS } from "@/data/mockData";
 import ChangeIndicator from "@/components/ChangeIndicator";
-import { Area, AreaChart, ResponsiveContainer } from "recharts";
-
-const INVERSE_METRICS = ["Cancellation Rate"];
 
 const NetworkPulse = () => {
   return (
@@ -13,13 +10,7 @@ const NetworkPulse = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         {MOCK_KPIS.map((kpi, i) => {
-          const isInverse = INVERSE_METRICS.includes(kpi.label);
-          const trendData = kpi.trend.map((v, idx) => ({ week: idx, value: v }));
-          const trendUp = kpi.trend[kpi.trend.length - 1] > kpi.trend[0];
-          const isPositiveTrend = isInverse ? !trendUp : trendUp;
-          const strokeColor = isPositiveTrend
-            ? "hsl(152, 60%, 48%)"
-            : "hsl(0, 72%, 55%)";
+          const isInverse = kpi.inverse;
 
           return (
             <div
@@ -29,26 +20,6 @@ const NetworkPulse = () => {
             >
               <span className="text-xs text-muted-foreground uppercase tracking-wider">{kpi.label}</span>
               <span className="text-2xl font-semibold font-mono tracking-tight">{kpi.value}</span>
-              <div className="h-8 -mx-1">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={trendData}>
-                    <defs>
-                      <linearGradient id={`grad-${i}`} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={strokeColor} stopOpacity={0.3} />
-                        <stop offset="100%" stopColor={strokeColor} stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <Area
-                      type="monotone"
-                      dataKey="value"
-                      stroke={strokeColor}
-                      strokeWidth={1.5}
-                      fill={`url(#grad-${i})`}
-                      dot={false}
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
               <div className="flex items-center gap-2">
                 <ChangeIndicator
                   change={kpi.change}
