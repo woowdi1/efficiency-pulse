@@ -1,6 +1,7 @@
 import ReportHeader from "@/components/ReportHeader";
 import NetworkPulse from "@/components/NetworkPulse";
-
+import NetworkDynamics from "@/components/NetworkDynamics";
+import RegionMap from "@/components/RegionMap";
 import Leaderboards from "@/components/Leaderboards";
 import DayOfWeekHeatmap from "@/components/DayOfWeekHeatmap";
 import WeeklyCases from "@/components/WeeklyCases";
@@ -13,6 +14,8 @@ const Index = () => {
         <ReportHeader />
         <div className="space-y-10">
           <NetworkPulse />
+          <NetworkDynamics />
+          <RegionMap />
           
           <Leaderboards />
           <DayOfWeekHeatmap />
